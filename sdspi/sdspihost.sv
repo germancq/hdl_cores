@@ -6,6 +6,9 @@
  * @Last modified by:   germancq
  * @Last modified time: 2019-03-06T13:43:01+01:00
  */
+ /****************************
+  BASED ON https://github.com/paulino/minsdhcspi-host
+ *****************************/
 
  module sdspihost(
    input clk,
