@@ -29,6 +29,7 @@ from cocotb.clock import Clock
 #default unit time is nanosecond
 CLK_PERIOD = 20 # 50 MHz
 
+
 def setup_function(dut):
     cocotb.fork(Clock(dut.clk, CLK_PERIOD).start())
     dut.reset = 1
@@ -41,6 +42,7 @@ def setup_function(dut):
     dut.data_in = 0xFF
     dut.miso = 1
     dut.sclk_speed = 6
+    
 
 
 @cocotb.coroutine
@@ -66,6 +68,7 @@ def check_CMD_0(dut):
 
     print("check CMD0")
     #bloquea la signal w_cmd = 1, buscar el motivo
+    #signal w_cmd = 1 stops the simulation, why?
 
     yield n_cycles_clock(dut,1)
 
@@ -120,6 +123,7 @@ def check_INITIALIZATION(dut):
 
     while(dut.counter_o != 25):
         yield n_cycles_clock(dut,1)   
+        
 
     yield n_cycles_clock(dut,1)                          
 
@@ -161,7 +165,7 @@ def check_INITIALIZATION(dut):
 
         yield n_cycles_clock(dut,1)
 
-        print(k)
+    
 
     
 

@@ -50,7 +50,7 @@
  //assign SD_DAT_1 = 1'b1;
  //assign SD_DAT_2 = 1'b1;
 
-
+ parameter CYCLES_CLK_WAIT = 32'd25000000;
 
 
  //spi_master inteface
@@ -325,7 +325,7 @@
            up_counter = 1;
 
 
-           if(counter_o == 32'd25000000)
+           if(counter_o == CYCLES_CLK_WAIT)
            begin
              next_state = WAIT_74_CYC;
              rst_counter = 1;

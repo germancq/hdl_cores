@@ -7,8 +7,7 @@
 
 VERILOG_SOURCES = ../../spi_master.sv \
 				  ../../../misc/counter.sv \
-				  ../../../misc/register.sv \
-				  ../../../misc/shift_register.sv 
+				  ../../../misc/register.sv 
 				  
 TOPLEVEL=spi_master
 MODULE=spi_master_test

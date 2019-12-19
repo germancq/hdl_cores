@@ -10,11 +10,11 @@ VERILOG_SOURCES = ../../sdspihost.sv \
 				  ../../spi_master.sv \
 				  ../../../misc/counter.sv \
 				  ../../../misc/mux.sv \
-				  ../../../misc/register.sv \
-				  ../../../misc/shift_register.sv 
+				  ../../../misc/register.sv 
 
 
 TOPLEVEL=sdspihost
 MODULE=sdspihost_test
+
 include $(COCOTB)/makefiles/Makefile.inc
 include $(COCOTB)/makefiles/Makefile.sim

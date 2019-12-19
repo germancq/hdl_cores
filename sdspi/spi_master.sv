@@ -16,11 +16,14 @@
            input ss_in,// SPI SS
 
            output logic busy,// Data ready when not busy
-
+           
+           
            input miso,//SPI external connections
            output mosi,
            output sclk,
            output ss,
+           
+
            output [31:0] debug
    );
 
@@ -108,7 +111,7 @@
     .rst(rst_counter_sclk),
     .up(up_sclk),
     .down(1'b0),
-    .din(8'h0),
+    .din(32'h0),
     .dout(counter_sclk_o)
  );
 
@@ -181,7 +184,7 @@
        reg_sclk <= 0;
        reg_sclk_w <= 1;
      end
-   else if(counter_data_o == 8'd15)
+   else if(counter_data_o == 5'd15)
      begin
        rst_counter_data <= 1;
        rst_counter_sclk <= 1;
