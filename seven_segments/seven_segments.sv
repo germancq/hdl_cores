@@ -2,17 +2,17 @@
  * @ Author: German Cano Quiveu, germancq
  * @ Create Time: 2019-12-04 16:03:33
  * @ Modified by: Your name
- * @ Modified time: 2019-12-05 12:09:54
+ * @ Modified time: 2020-01-07 16:03:12
  * @ Description:
  */
 
 
 module display
-  #(parameter N = 32)
+  #(parameter N = 32,
+    parameter CLK_MHZ = 100)
   (
     input clk,
     input rst,
-    input [31:0] div_value,
     input [N-1:0] din,
     output [(N>>2)-1:0] an,
     output [6:0] seg
@@ -22,7 +22,7 @@ module display
     div_clk_module #(.N(N)) div_clk_module_inst(
     .clk(clk),
     .rst(rst),
-    .div(div_value),
+    .div($clog2(CLK_MHZ)-$clog2(200)-1),
     .an_gen_o(an_gen)
     );
 
