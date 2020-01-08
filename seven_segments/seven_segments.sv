@@ -2,14 +2,14 @@
  * @ Author: German Cano Quiveu, germancq
  * @ Create Time: 2019-12-04 16:03:33
  * @ Modified by: Your name
- * @ Modified time: 2020-01-07 16:03:12
+ * @ Modified time: 2020-01-08 12:39:26
  * @ Description:
  */
 
 
 module display
   #(parameter N = 32,
-    parameter CLK_MHZ = 100)
+    parameter CLK_HZ = 100000000)
   (
     input clk,
     input rst,
@@ -22,7 +22,7 @@ module display
     div_clk_module #(.N(N)) div_clk_module_inst(
     .clk(clk),
     .rst(rst),
-    .div($clog2(CLK_MHZ)-$clog2(200)-1),
+    .div($clog2(CLK_HZ)-$clog2(200)-1),
     .an_gen_o(an_gen)
     );
 
