@@ -31,17 +31,16 @@
  logic sclk_prev;
  logic sclk_curr;
 
- logic master_out_cl;
+
  logic master_out_w;
  logic master_out_shl;
 
  //miso
- logic master_in_cl;
  logic master_in_w;
  logic master_in_shl;
  shift_register #(.DATA_WIDTH(8)) master_in_reg(
    .clk(clk),
-   .cl(master_in_cl),
+   .cl(1'b0),
    .load(master_in_w),
    .din(8'hFF),
    .dout(data_out),
@@ -54,7 +53,7 @@
  logic [7:0] reg_data_in;
  register #(.DATA_WIDTH(8)) sclk_reg(
     .clk(clk),
-    .cl(master_out_cl),
+    .cl(1'b0),
     .w(master_out_w),
     .din(data_in),
     .dout(reg_data_in)
@@ -67,7 +66,7 @@
  
  shift_register #(.DATA_WIDTH(8)) master_out_reg(
    .clk(clk),
-   .cl(master_out_cl),
+   .cl(1'b0),
    .load(master_out_w),
    .din(data_in),
    .dout(master_out_o),
@@ -91,11 +90,10 @@
 
 
  logic reg_sclk;
- logic reg_sclk_cl;
  logic reg_sclk_w;
  register #(.DATA_WIDTH(1)) sclk_register(
    .clk(clk),
-   .cl(reg_sclk_cl),
+   .cl(1'b0),
    .w(reg_sclk_w),
    .din(reg_sclk),
    .dout(sclk)
@@ -144,15 +142,12 @@
    sclk_cl <= 0;
    sclk_w <= 0;
 
-   master_out_cl <= 0;
    master_out_w <= 0;
    master_out_shl <= 0;
 
-   master_in_cl <= 0;
    master_in_w <= 0;
    master_in_shl <= 0;
 
-   reg_sclk_cl <= 0;
    reg_sclk_w <= 0;
 
    busy <= 0;
